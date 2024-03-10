@@ -13,7 +13,7 @@ class TaskController extends Controller
 
     public function index(): AnonymousResourceCollection
     {
-        return TaskResource::collection(Auth::user()->tasks);
+        return TaskResource::collection(Auth::user()->tasks()->paginate(100));
     }
 
     public function store(TaskStoreRequest $request): TaskResource
